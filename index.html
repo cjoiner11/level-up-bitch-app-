@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#43c7ca">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Level Up">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Level Up, Bitch</title>
+<style>
+:root{--bg:#effbfb;--card:#fff;--text:#18363a;--muted:#6e8a8e;--a:#43c7ca;--a2:#8de0e2;--deep:#159ca2;--line:#d7eeee;--danger:#df5c6d;--shadow:0 10px 30px rgba(24,115,119,.12)}
+body.dark{--bg:#102427;--card:#183337;--text:#edffff;--muted:#a2c7ca;--a:#5bdadd;--a2:#34777b;--deep:#38bec3;--line:#2b5359;--shadow:0 10px 30px rgba(0,0,0,.25)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}body{padding-bottom:88px}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px;background:linear-gradient(180deg,var(--bg) 82%,transparent)}.eyebrow{font-size:.7rem;font-weight:900;letter-spacing:.13em;color:var(--deep)}h1{margin:2px 0 0;font-size:1.7rem}.icon{width:42px;height:42px;border:0;border-radius:14px;background:var(--card);color:var(--text);box-shadow:var(--shadow)}
+main{padding:0 16px 26px;max-width:1100px;margin:auto}.hero{padding:22px;border-radius:25px;background:linear-gradient(135deg,var(--a),var(--a2));color:#07383b;box-shadow:var(--shadow);margin-bottom:16px}.hero h2{margin:0 0 8px;font-size:1.55rem}.hero p{margin:0;opacity:.82}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}.smallcard{padding:14px}.muted{color:var(--muted);font-size:.88rem}.big{font-size:1.4rem;font-weight:900;margin-top:6px}
+.section{display:flex;justify-content:space-between;align-items:center;margin:20px 2px 10px}.section h2{margin:0;font-size:1.18rem}.btn{border:0;border-radius:14px;padding:10px 14px;font-weight:800}.primary{background:var(--a);color:#07383b}.secondary{background:var(--line);color:var(--text)}.danger{background:#ffe3e8;color:#a02f3f}.sm{padding:7px 10px;font-size:.82rem}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.quick button{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px 5px;color:var(--text);font-weight:800;box-shadow:var(--shadow)}.quick span{display:block;font-size:1.35rem;margin-bottom:4px}
+.list{display:flex;flex-direction:column}.item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.grow{flex:1;min-width:0}.title{font-weight:820;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sub{font-size:.82rem;color:var(--muted);margin-top:3px}.amount{font-weight:900;white-space:nowrap}.empty{text-align:center;color:var(--muted);padding:20px 4px}.badge{background:var(--line);padding:5px 9px;border-radius:999px;font-size:.75rem;font-weight:800}
+.progress{height:10px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:8px}.progress>div{height:100%;background:linear-gradient(90deg,var(--deep),var(--a));border-radius:999px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:5px}.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:8px 12px;font-weight:800;white-space:nowrap}.tab.on{background:var(--a);color:#07383b;border-color:transparent}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(6,1fr);background:var(--card);border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom))}.nav button{border:0;background:transparent;color:var(--muted);padding:5px 1px;border-radius:12px}.nav span{display:block;font-size:1.1rem}.nav small{font-size:.66rem}.nav .on{background:var(--line);color:var(--deep)}
+dialog{width:min(92vw,540px);border:0;border-radius:22px;padding:0;background:var(--card);color:var(--text);box-shadow:0 28px 90px rgba(0,0,0,.32)}dialog::backdrop{background:rgba(3,28,32,.58);backdrop-filter:blur(4px)}form{padding:18px}.dhead{display:flex;justify-content:space-between;align-items:center}.dhead h2{margin:0}.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:.84rem;font-weight:800}.field input,.field select,.field textarea{border:1px solid var(--line);background:var(--bg);color:var(--text);padding:12px;border-radius:13px}.field textarea{min-height:88px}.actions{display:flex;justify-content:flex-end;gap:9px;margin-top:16px}.check{width:20px;height:20px;accent-color:var(--deep)}
+@media(min-width:760px){body{padding-bottom:0;padding-left:170px}.nav{top:0;right:auto;width:160px;bottom:0;grid-template-columns:1fr;align-content:start;gap:5px;padding:24px 12px;border-top:0;border-right:1px solid var(--line)}.nav button{display:flex;align-items:center;gap:10px;padding:12px;text-align:left}.nav span{display:inline}.nav small{font-size:.86rem}.top{padding-left:28px}.desktop4{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header class="top"><div><div class="eyebrow">PERSONAL COMMAND CENTER</div><h1>Level Up, Bitch</h1></div><button id="theme" class="icon">☀️</button></header>
+<main id="view"></main>
+<nav class="nav">
+<button class="on" data-page="home"><span>🏠</span><small>Home</small></button>
+<button data-page="money"><span>💰</span><small>Money</small></button>
+<button data-page="career"><span>💼</span><small>Career</small></button>
+<button data-page="health"><span>❤️</span><small>Health</small></button>
+<button data-page="planner"><span>✅</span><small>Planner</small></button>
+<button data-page="goals"><span>🎯</span><small>Goals</small></button>
+</nav>
+<dialog id="dlg"><form id="form"><div class="dhead"><h2 id="dlgTitle">Add</h2><button type="button" id="x" class="icon">✕</button></div><div id="fields"></div><div class="actions"><button type="button" id="cancel" class="btn secondary">Cancel</button><button class="btn primary">Save</button></div></form></dialog>
+<script>
+(function(){
+"use strict";
+var KEY="levelUpWorkingV1";
+var emptyDB={settings:{theme:"light"},paychecks:[],purchases:[],bills:[],savings:[],debts:[],careerGoals:[],agencyVisits:[],production:[],weights:[],periods:[],workouts:[],habits:[],todos:[],planner:[],goals:[]};
+var db=load(), page="home", moneyTab="overview", healthTab="weight", addType=null;
+var view=document.getElementById("view"), dlg=document.getElementById("dlg"), form=document.getElementById("form");
+function copy(o){return JSON.parse(JSON.stringify(o))}
+function load(){try{var x=JSON.parse(localStorage.getItem(KEY));var b=copy(emptyDB);if(x){for(var k in x)b[k]=x[k]}return b}catch(e){return copy(emptyDB)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]})}
+function n(v){return Number(v||0)}
+function cash(v){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(n(v))}
+function sum(a,k){k=k||"amount";var t=0;for(var i=0;i<a.length;i++)t+=n(a[i][k]);return t}
+function d(v){return v?new Date(v+"T12:00:00").toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"}):""}
+function mid(){return new Date().toISOString().slice(0,7)}
+function id(){return String(Date.now())+String(Math.random()).slice(2)}
+function pct(a,b){return b?Math.max(0,Math.min(100,Math.round(n(a)/n(b)*100))):0}
+function stat(l,v,s){return '<div class="card smallcard"><div class="muted">'+l+'</div><div class="big">'+v+'</div>'+(s?'<div class="muted">'+s+'</div>':'')+'</div>'}
+function section(t,a,fn){return '<div class="section"><h2>'+t+'</h2>'+(a?'<button class="btn primary sm" onclick="'+fn+'">'+a+'</button>':'')+'</div>'}
+function list(a,fn,msg){if(!a.length)return '<div class="empty">'+(msg||"No entries yet.")+'</div>';var h='<div class="list">';for(var i=0;i<a.length;i++)h+=fn(a[i]);return h+'</div>'}
+function progress(label,current,target,moneyMode){var p=pct(current,target);return '<div class="item"><div class="grow"><div class="title">'+esc(label)+'</div><div class="progress"><div style="width:'+p+'%"></div></div><div class="sub">'+(moneyMode?cash(current):current)+' of '+(moneyMode?cash(target):target)+' • '+p+'%</div></div></div>'}
+function hero(t,s){return '<section class="hero"><h2>'+t+'</h2><p>'+s+'</p></section>'}
+function render(){if(page==="home")home();if(page==="money")money();if(page==="career")career();if(page==="health")health();if(page==="planner")planner();if(page==="goals")goals();window.scrollTo(0,0)}
+function go(p){page=p;var bs=document.querySelectorAll(".nav button");for(var i=0;i<bs.length;i++)bs[i].classList.toggle("on",bs[i].getAttribute("data-page")===p);render()}window.go=go;
+var navBtns=document.querySelectorAll(".nav button");for(var i=0;i<navBtns.length;i++)navBtns[i].onclick=function(){go(this.getAttribute("data-page"))};
+
+function home(){
+ var m=mid(), income=sum(db.paychecks.filter(function(x){return x.date&&x.date.indexOf(m)===0})), spend=sum(db.purchases.filter(function(x){return x.date&&x.date.indexOf(m)===0})), open=db.todos.filter(function(x){return !x.done}).length;
+ var w=db.weights.slice().sort(function(a,b){return String(b.date).localeCompare(String(a.date))})[0];
+ var bills=db.bills.filter(function(x){return !x.paid}).sort(function(a,b){return String(a.due).localeCompare(String(b.due))}).slice(0,4);
+ view.innerHTML=hero("Hey Cassandra, let’s level up.",new Date().toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"})+" • One focused step at a time.")
+ +'<div class="grid desktop4">'+stat("Net income this month",cash(income))+stat("Spending this month",cash(spend),cash(Math.max(0,income-spend))+" remaining")+stat("Open to-dos",open)+stat("Latest weight",w?w.weight+" lb":"—")+'</div>'
+ +section("Quick add")
+ +'<div class="quick"><button onclick="openAdd(\'purchase\')"><span>🛍️</span>Purchase</button><button onclick="openAdd(\'paycheck\')"><span>💵</span>Paycheck</button><button onclick="openAdd(\'todo\')"><span>✅</span>To-do</button><button onclick="openAdd(\'weight\')"><span>⚖️</span>Weight</button><button onclick="openAdd(\'workout\')"><span>🏋️</span>Workout</button><button onclick="openAdd(\'agency\')"><span>🏢</span>Agency</button></div>'
+ +section("Upcoming bills","View money","go('money')")+'<div class="card">'+list(bills,function(x){return '<div class="item"><div><div class="title">'+esc(x.name)+'</div><div class="sub">Due '+d(x.due)+'</div></div><div class="amount">'+cash(x.amount)+'</div></div>'},"No unpaid bills.")+'</div>'
+ +section("Today’s focus","Open planner","go('planner')")+'<div class="card">'+list(db.todos.filter(function(x){return !x.done}).slice(0,5),function(x){return '<div class="item"><div class="grow"><div class="title">'+esc(x.title)+'</div><div class="sub">'+esc(x.category||"Personal")+(x.due?" • "+d(x.due):"")+'</div></div><span class="badge">'+esc(x.priority||"Normal")+'</span></div>'},"Nothing pending. Enjoy the win.")+'</div>';
+}
+function tabBar(items,current,fn){var h='<div class="tabs">';for(var i=0;i<items.length;i++)h+='<button class="tab '+(items[i]===current?"on":"")+'" onclick="'+fn+'(\''+items[i]+'\')">'+items[i].charAt(0).toUpperCase()+items[i].slice(1)+'</button>';return h+'</div>'}
+function money(){
+ var m=mid(), income=sum(db.paychecks.filter(function(x){return x.date&&x.date.indexOf(m)===0})), spend=sum(db.purchases.filter(function(x){return x.date&&x.date.indexOf(m)===0})), unpaid=sum(db.bills.filter(function(x){return !x.paid})), saved=sum(db.savings);
+ view.innerHTML=hero("Money command center","Track every dollar without making budgeting feel like punishment.")+tabBar(["overview","paychecks","purchases","bills","savings","debt"],moneyTab,"setMoneyTab")+'<div id="body"></div>';
+ var b=document.getElementById("body");
+ if(moneyTab==="overview")b.innerHTML=section("This month")+'<div class="grid desktop4">'+stat("Income",cash(income))+stat("Purchases",cash(spend))+stat("Unpaid bills",cash(unpaid))+stat("Saved",cash(saved))+'</div>'+section("Savings goals","Add","openAdd('saving')")+'<div class="card">'+list(db.savings,function(x){return progress(x.name,x.amount,x.target,true)},"Add your first savings goal.")+'</div>'+section("Debt payoff","Add","openAdd('debt')")+'<div class="card">'+list(db.debts,function(x){return progress(x.name,Math.max(0,n(x.start)-n(x.balance)),x.start,true)},"Add a debt to track.")+'</div>';
+ if(moneyTab==="paychecks")b.innerHTML=table("Paychecks","Add paycheck","paycheck",db.paychecks,function(x){return row(x.source,d(x.date)+(x.note?" • "+esc(x.note):""),cash(x.amount),"paychecks",x.id)});
+ if(moneyTab==="purchases")b.innerHTML=table("Purchase ledger","Add purchase","purchase",db.purchases,function(x){return row(x.name,esc(x.category)+" • "+d(x.date),cash(x.amount),"purchases",x.id)});
+ if(moneyTab==="bills")b.innerHTML=table("Bills","Add bill","bill",db.bills,function(x){return '<div class="item"><input class="check" type="checkbox" '+(x.paid?"checked":"")+' onchange="toggleBill(\''+x.id+'\')"><div class="grow"><div class="title">'+esc(x.name)+'</div><div class="sub">Due '+d(x.due)+'</div></div><div><div class="amount">'+cash(x.amount)+'</div><button class="btn danger sm" onclick="removeItem(\'bills\',\''+x.id+'\')">Delete</button></div></div>'});
+ if(moneyTab==="savings")b.innerHTML=table("Savings goals","Add goal","saving",db.savings,function(x){return '<div class="item"><div class="grow">'+progress(x.name,x.amount,x.target,true)+'</div><button class="btn danger sm" onclick="removeItem(\'savings\',\''+x.id+'\')">Delete</button></div>'});
+ if(moneyTab==="debt")b.innerHTML=table("Debt payoff","Add debt","debt",db.debts,function(x){return row(x.name,"Balance "+cash(x.balance)+" • Starting "+cash(x.start),"","debts",x.id)});
+}
+function row(t,s,a,c,i){return '<div class="item"><div class="grow"><div class="title">'+esc(t)+'</div><div class="sub">'+s+'</div></div><div>'+(a?'<div class="amount">'+a+'</div>':'')+'<button class="btn danger sm" onclick="removeItem(\''+c+'\',\''+i+'\')">Delete</button></div></div>'}
+function table(t,a,type,arr,fn){return section(t,a,"openAdd('"+type+"')")+'<div class="card">'+list(arr.slice().reverse(),fn)+'</div>'}
+function setMoneyTab(t){moneyTab=t;money()}window.setMoneyTab=setMoneyTab;
+
+function career(){
+ view.innerHTML=hero("Career growth","Keep your production goals, agency visits, and next moves in one place.")
+ +'<div class="grid">'+stat("Career goals",db.careerGoals.length)+stat("Agency visits",db.agencyVisits.length)+stat("Production",cash(sum(db.production)))+'</div>'
+ +section("Career goal tracker","Add goal","openAdd('careerGoal')")+'<div class="card">'+list(db.careerGoals,function(x){return '<div class="item"><div class="grow"><div class="title">'+esc(x.title)+'</div><div class="progress"><div style="width:'+pct(x.progress,100)+'%"></div></div><div class="sub">'+x.progress+'% • Target '+d(x.target)+'</div></div><button class="btn danger sm" onclick="removeItem(\'careerGoals\',\''+x.id+'\')">Delete</button></div>'},"Add your first career goal.")+'</div>'
+ +section("Agency visits","Add visit","openAdd('agency')")+'<div class="card">'+list(db.agencyVisits.slice().reverse(),function(x){return row(x.agency,d(x.date)+" • "+esc(x.contact||"No contact")+(x.notes?" • "+esc(x.notes):""),"","agencyVisits",x.id)},"No agency visits logged.")+'</div>'
+ +section("Production tracker","Add production","openAdd('production')")+'<div class="card">'+list(db.production.slice().reverse(),function(x){return row(x.account,d(x.date)+" • "+esc(x.status),cash(x.amount),"production",x.id)},"No production entries.")+'</div>';
+}
+function health(){
+ view.innerHTML=hero("Health & wellness","Track progress with compassion, consistency, and zero shame.")+tabBar(["weight","period","workouts","habits"],healthTab,"setHealthTab")+'<div id="hbody"></div>';
+ var b=document.getElementById("hbody");
+ if(healthTab==="weight"){var s=db.weights.slice().sort(function(a,b){return String(a.date).localeCompare(String(b.date))}),last=s[s.length-1],first=s[0];b.innerHTML=section("Weight tracker","Add weight","openAdd('weight')")+'<div class="grid">'+stat("Current",last?last.weight+" lb":"—")+stat("Change",last&&first?(n(last.weight)-n(first.weight)).toFixed(1)+" lb":"—")+'</div><div class="card" style="margin-top:12px">'+list(db.weights.slice().reverse(),function(x){return row(x.weight+" lb",d(x.date)+(x.note?" • "+esc(x.note):""),"","weights",x.id)},"Add your first weight entry.")+'</div>'}
+ if(healthTab==="period")b.innerHTML=table("Period tracker","Log period","period",db.periods,function(x){return row(d(x.start)+(x.end?" – "+d(x.end):""),esc(x.flow)+" flow"+(x.symptoms?" • "+esc(x.symptoms):""),"","periods",x.id)});
+ if(healthTab==="workouts")b.innerHTML=table("Workout tracker","Log workout","workout",db.workouts,function(x){return row(x.type,d(x.date)+" • "+x.minutes+" minutes"+(x.note?" • "+esc(x.note):""),"","workouts",x.id)});
+ if(healthTab==="habits")b.innerHTML=table("Habit tracker","Add habit","habit",db.habits,function(x){return '<div class="item"><input class="check" type="checkbox" '+(x.done?"checked":"")+' onchange="toggleHabit(\''+x.id+'\')"><div class="grow"><div class="title">'+esc(x.name)+'</div><div class="sub">'+esc(x.frequency)+'</div></div><button class="btn danger sm" onclick="removeItem(\'habits\',\''+x.id+'\')">Delete</button></div>'});
+}
+function setHealthTab(t){healthTab=t;health()}window.setHealthTab=setHealthTab;
+function planner(){
+ view.innerHTML=hero("Planner & to-do","Capture it, prioritize it, and stop carrying everything in your head.")
+ +'<div class="grid">'+stat("Open tasks",db.todos.filter(function(x){return !x.done}).length)+stat("Completed",db.todos.filter(function(x){return x.done}).length)+'</div>'
+ +section("To-do list","Add task","openAdd('todo')")+'<div class="card">'+list(db.todos.slice().sort(function(a,b){return Number(a.done)-Number(b.done)}),function(x){return '<div class="item"><input class="check" type="checkbox" '+(x.done?"checked":"")+' onchange="toggleTodo(\''+x.id+'\')"><div class="grow"><div class="title" style="'+(x.done?"text-decoration:line-through;opacity:.6":"")+'">'+esc(x.title)+'</div><div class="sub">'+esc(x.category)+(x.due?" • "+d(x.due):"")+'</div></div><span class="badge">'+esc(x.priority)+'</span><button class="btn danger sm" onclick="removeItem(\'todos\',\''+x.id+'\')">Delete</button></div>'},"Your list is clear.")+'</div>'
+ +section("Planner notes","Add note","openAdd('planner')")+'<div class="card">'+list(db.planner.slice().reverse(),function(x){return row(x.title,d(x.date)+" • "+esc(x.notes),"","planner",x.id)},"No planner notes.")+'</div>';
+}
+function goals(){
+ view.innerHTML=hero("Goals & vision","Turn the two-year vision into visible, measurable steps.")
+ +'<div class="grid">'+stat("Active goals",db.goals.filter(function(x){return n(x.progress)<100}).length)+stat("Completed",db.goals.filter(function(x){return n(x.progress)>=100}).length)+'</div>'
+ +section("Goal tracker","Add goal","openAdd('goal')")+'<div class="card">'+list(db.goals,function(x){return '<div class="item"><div class="grow"><div class="title">'+esc(x.title)+'</div><div class="sub">'+esc(x.category)+" • Target "+d(x.target)+'</div><div class="progress"><div style="width:'+pct(x.progress,100)+'%"></div></div><div class="sub">'+x.progress+'% complete'+(x.notes?" • "+esc(x.notes):"")+'</div></div><button class="btn danger sm" onclick="removeItem(\'goals\',\''+x.id+'\')">Delete</button></div>'},"Add your first big goal.")+'</div>';
+}
+var configs={
+paycheck:{title:"Add paycheck",c:"paychecks",f:[["source","Source","text"],["amount","Net amount","number"],["date","Pay date","date"],["note","Note","text"]]},
+purchase:{title:"Add purchase",c:"purchases",f:[["name","Purchase","text"],["amount","Amount","number"],["category","Category","select",["Groceries","Dining","Shopping","Transportation","Beauty","Health","Entertainment","Other"]],["date","Date","date"]]},
+bill:{title:"Add bill",c:"bills",f:[["name","Bill name","text"],["amount","Amount","number"],["due","Due date","date"]]},
+saving:{title:"Add savings goal",c:"savings",f:[["name","Goal name","text"],["amount","Current amount","number"],["target","Target amount","number"]]},
+debt:{title:"Add debt",c:"debts",f:[["name","Debt name","text"],["start","Starting balance","number"],["balance","Current balance","number"]]},
+careerGoal:{title:"Add career goal",c:"careerGoals",f:[["title","Goal","text"],["progress","Progress %","number"],["target","Target date","date"]]},
+agency:{title:"Log agency visit",c:"agencyVisits",f:[["agency","Agency","text"],["contact","Contact","text"],["date","Visit date","date"],["notes","Notes","textarea"]]},
+production:{title:"Add production",c:"production",f:[["account","Account","text"],["amount","Premium","number"],["status","Status","select",["Lead","Quoted","Bound","Lost"]],["date","Date","date"]]},
+weight:{title:"Log weight",c:"weights",f:[["weight","Weight (lb)","number"],["date","Date","date"],["note","Note","text"]]},
+period:{title:"Log period",c:"periods",f:[["start","Start date","date"],["end","End date","date"],["flow","Flow","select",["Light","Medium","Heavy"]],["symptoms","Symptoms / notes","textarea"]]},
+workout:{title:"Log workout",c:"workouts",f:[["type","Workout type","select",["Strength","Walking","Peloton","Cardio","Mobility","Other"]],["minutes","Minutes","number"],["date","Date","date"],["note","Note","text"]]},
+habit:{title:"Add habit",c:"habits",f:[["name","Habit","text"],["frequency","Frequency","select",["Daily","Weekdays","Weekly"]]]},
+todo:{title:"Add to-do",c:"todos",f:[["title","Task","text"],["category","Category","select",["Personal","Money","Career","Health","Home"]],["priority","Priority","select",["Low","Normal","High"]],["due","Due date","date"]]},
+planner:{title:"Add planner note",c:"planner",f:[["title","Title","text"],["date","Date","date"],["notes","Notes","textarea"]]},
+goal:{title:"Add goal",c:"goals",f:[["title","Goal","text"],["category","Category","select",["Money","Career","Health","Personal","Home"]],["progress","Progress %","number"],["target","Target date","date"],["notes","Notes","textarea"]]}
+};
+function openAdd(t){addType=t;var c=configs[t];document.getElementById("dlgTitle").textContent=c.title;var h="";for(var i=0;i<c.f.length;i++){var f=c.f[i],name=f[0],label=f[1],type=f[2],opts=f[3];h+='<div class="field"><label>'+label+'</label>';if(type==="select"){h+='<select name="'+name+'">';for(var j=0;j<opts.length;j++)h+='<option>'+opts[j]+'</option>';h+='</select>'}else if(type==="textarea")h+='<textarea name="'+name+'"></textarea>';else h+='<input name="'+name+'" type="'+type+'" '+(type==="date"?'value="'+new Date().toISOString().slice(0,10)+'"':'')+' '+(type==="number"?'step="0.01"':'')+'>';h+='</div>'}document.getElementById("fields").innerHTML=h;dlg.showModal()}window.openAdd=openAdd;
+document.getElementById("x").onclick=document.getElementById("cancel").onclick=function(){dlg.close()};
+form.onsubmit=function(e){e.preventDefault();var c=configs[addType],fd=new FormData(form),o={id:id()};fd.forEach(function(v,k){o[k]=v});if(c.c==="bills")o.paid=false;if(c.c==="todos"||c.c==="habits")o.done=false;db[c.c].push(o);save();dlg.close();render()};
+function removeItem(c,i){db[c]=db[c].filter(function(x){return x.id!==i});save();render()}window.removeItem=removeItem;
+function toggleTodo(i){var x=db.todos.find(function(x){return x.id===i});if(x)x.done=!x.done;save();planner()}window.toggleTodo=toggleTodo;
+function toggleBill(i){var x=db.bills.find(function(x){return x.id===i});if(x)x.paid=!x.paid;save();money()}window.toggleBill=toggleBill;
+function toggleHabit(i){var x=db.habits.find(function(x){return x.id===i});if(x)x.done=!x.done;save();health()}window.toggleHabit=toggleHabit;
+document.getElementById("theme").onclick=function(){db.settings.theme=db.settings.theme==="dark"?"light":"dark";save();applyTheme()};
+function applyTheme(){document.body.classList.toggle("dark",db.settings.theme==="dark");document.getElementById("theme").textContent=db.settings.theme==="dark"?"🌙":"☀️"}
+applyTheme();render();
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('./sw.js').catch(function(){}); });
+}
+</script>
+</body></html>
